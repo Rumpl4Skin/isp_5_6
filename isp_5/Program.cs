@@ -4,8 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace isp_lab3
+namespace isp_lab5
 {
+    public interface IComparable
+    {
+        int CompareTo(object o);
+    }
     public abstract class Furniture
     {
         private int date_prod; //дата производства
@@ -123,7 +127,7 @@ namespace isp_lab3
 
     }
 
-    public class ForPosuda : Shkaf
+    public class ForPosuda : Shkaf ,IComparable
     {
         private string model; //модель
         public ForPosuda(int date, string material, string color, string model) : base(date, material, color) //конструктор
@@ -154,8 +158,27 @@ namespace isp_lab3
             Console.WriteLine("Модель для посуды: {0}", model);
 
         }
+
+        public int CompareTo(Object o)
+        {
+            ForPosuda e = o as ForPosuda;
+
+            if (e != null)
+            {
+                if (this.Date_prod < e.Date_prod)
+                    return -1;
+                else if (this.Date_prod > e.Date_prod)
+                    return 1;
+                else
+                    return 0;
+            }
+            else
+            {
+                throw new Exception("Параметр должен быть типа ForPosuda");
+            }
+        }
     }
-    public class ForObuv : Shkaf
+    public class ForObuv : Shkaf, IEquatable
     {
         private string model; //модель
         public ForObuv(int date, string material, string color, string model) : base(date, material, color)//конструктор
@@ -188,6 +211,11 @@ namespace isp_lab3
 
         }
     }
+
+    internal interface IEquatable
+    {
+    }
+
     public class ForOdejda : Shkaf
     {
         enum size
@@ -253,7 +281,52 @@ namespace isp_lab3
 
         }
     }
+    struct table
+    {
+        string table_name;
+        string name_material;
+        string number_legs;
 
+        public string Table_name
+        {
+            get
+            {
+                return table_name;
+            }
+            set
+            {
+                table_name = value;
+            }
+        }
+
+        public string Name_material
+        {
+            get
+            {
+                return name_material;
+            }
+            set
+            {
+                name_material = value;
+            }
+        }
+
+        public string GetNumberOfLegs
+        {
+            get
+            {
+                return number_legs;
+            }
+        }
+
+        
+
+        public void GetInfoAboutTable()
+        {
+            Console.Write($"Информация о столе:\n1.название стола: {table_name}\n2.название материала: {name_material}" +
+            $"\n3.кол-во ножек стола: {number_legs}\n");
+        }
+    }
     class Program
     {
         static void Main(string[] args)
