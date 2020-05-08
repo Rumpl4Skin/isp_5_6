@@ -311,15 +311,21 @@ namespace isp_lab5
             }
         }
 
-        public string GetNumberOfLegs
+        public string Number_legs
         {
             get
             {
                 return number_legs;
             }
+            set
+            {
+                number_legs = value;
+            }
         }
 
-        
+
+
+
 
         public void GetInfoAboutTable()
         {
@@ -331,7 +337,11 @@ namespace isp_lab5
     {
         static void Main(string[] args)
         {
-          
+            table t = new table();
+            t.Table_name = "Винтажный cтол";
+            t.Name_material = "Сосна";
+            t.Number_legs = "4";
+            t.GetInfoAboutTable();
             Shkaf.HowManyShkafs();
             Console.WriteLine();
             Shkaf shkaf = new Shkaf(2019, "Сереневый");
