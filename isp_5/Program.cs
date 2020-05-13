@@ -10,7 +10,7 @@ namespace isp_lab5
     {
         int CompareTo(object o);
     }
-    public class Furniture
+    public abstract class Furniture
     {
         private int date_prod; //дата производства
         private string type; //вид мебели
