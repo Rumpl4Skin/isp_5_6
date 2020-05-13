@@ -10,7 +10,7 @@ namespace isp_lab5
     {
         int CompareTo(object o);
     }
-    public abstract class Furniture
+    public class Furniture
     {
         private int date_prod; //дата производства
         private string type; //вид мебели
@@ -336,7 +336,7 @@ namespace isp_lab5
     class Program
     {
         static void Main(string[] args)
-        {
+        {      
             table t = new table();
             t.Table_name = "Винтажный cтол";
             t.Name_material = "Сосна";
@@ -345,9 +345,11 @@ namespace isp_lab5
             Shkaf.HowManyShkafs();
             Console.WriteLine();
             Shkaf shkaf = new Shkaf(2019, "Сереневый");
+            shkaf.Color = "Бордовый";
             shkaf.ShowInfo();
             Console.WriteLine();
             ForPosuda ForPosuda = new ForPosuda(2017, "Черный", "с стеклянными матовыми дверцами");
+           
             ForPosuda.ShowInfo();
             Console.WriteLine();
             Shkaf.HowManyShkafs();
