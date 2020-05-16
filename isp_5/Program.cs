@@ -323,10 +323,6 @@ namespace isp_lab5
             }
         }
 
-
-
-
-
         public void GetInfoAboutTable()
         {
             Console.Write($"Информация о столе:\n1.название стола: {table_name}\n2.название материала: {name_material}" +
@@ -336,7 +332,9 @@ namespace isp_lab5
     class Program
     {
         static void Main(string[] args)
-        {      
+        {
+            Furniture furniture = new Shkaf(2019, "Сереневый");
+            furniture.ShowInfo();
             table t = new table();
             t.Table_name = "Винтажный cтол";
             t.Name_material = "Сосна";
@@ -348,8 +346,7 @@ namespace isp_lab5
             shkaf.Color = "Бордовый";
             shkaf.ShowInfo();
             Console.WriteLine();
-            ForPosuda ForPosuda = new ForPosuda(2017, "Черный", "с стеклянными матовыми дверцами");
-           
+            ForPosuda ForPosuda = new ForPosuda(2017, "Черный", "с стеклянными матовыми дверцами");        
             ForPosuda.ShowInfo();
             Console.WriteLine();
             Shkaf.HowManyShkafs();
