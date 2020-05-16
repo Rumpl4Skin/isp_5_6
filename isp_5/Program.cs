@@ -333,7 +333,7 @@ namespace isp_lab5
     {
         static void Main(string[] args)
         {
-            Furniture furniture = new Shkaf(2019, "Сереневый");
+            Furniture furniture = new Shkaf(2019, "Дуб","Сереневый");
             furniture.ShowInfo();
             table t = new table();
             t.Table_name = "Винтажный cтол";
