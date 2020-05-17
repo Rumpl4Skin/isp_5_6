@@ -21,22 +21,18 @@ namespace isp_lab5
             this.date_prod = date;
             this.material = material;
         }
-
         public Furniture(int date, string material)//конструктор с двумя аргументами
         {
             this.date_prod = date;
             type = "Шкаф";
             this.material = material;
         }
-
         public Furniture(int date) //конструктор с одним аргументом
         {
             this.date_prod = date;
             type = "Шкаф";
             material = "Фанера";
         }
-
-
         public string Type
         {
             get
@@ -48,7 +44,6 @@ namespace isp_lab5
                 type = value;
             }
         }
-
         public int Date_prod
         {
             get
@@ -60,7 +55,6 @@ namespace isp_lab5
                 date_prod = value;
             }
         }
-
         public string Material
         {
             get
@@ -72,7 +66,6 @@ namespace isp_lab5
                 material = value;
             }
         }
-
         public virtual void ShowInfo()
         {
             Console.WriteLine("Класс: Мебель");
@@ -83,8 +76,7 @@ namespace isp_lab5
     }
 
     public class Shkaf : Furniture
-    {
-        
+    {       
        private string color; //цвет шкафа
         private static int count = 0; //счетчик
         public Shkaf(int date, string material, string color) : base(date, material)//конструктор
@@ -93,14 +85,12 @@ namespace isp_lab5
             this.color = color;
             count++;
         }
-
         public Shkaf(int date, string color) : base(date)//конструктор
         {
 
             this.color = color;
             count++;
         }
-
         public string Color
         {
             get
@@ -112,7 +102,6 @@ namespace isp_lab5
                 color = value;
             }
         }
-
         public override void ShowInfo()
         {
             base.ShowInfo();
@@ -134,12 +123,10 @@ namespace isp_lab5
         {
             this.model = model;
         }
-
         public ForPosuda(int date, string color, string model) : base(date, color) //конструктор
         {
             this.model = model;
         }
-
         public string Model
         {
             get
@@ -158,7 +145,6 @@ namespace isp_lab5
             Console.WriteLine("Модель для посуды: {0}", model);
 
         }
-
         public int CompareTo(Object o)
         {
             ForPosuda e = o as ForPosuda;
@@ -178,6 +164,7 @@ namespace isp_lab5
             }
         }
     }
+
     public class ForObuv : Shkaf, IEquatable
     {
         private string model; //модель
@@ -185,12 +172,10 @@ namespace isp_lab5
         {
             this.model = model;
         }
-
         public ForObuv(int date, string color, string model) : base(date, color)//конструктор
         {
             this.model = model;
         }
-
         public string Model
         {
             get
@@ -202,7 +187,6 @@ namespace isp_lab5
                 model = value;
             }
         }
-
         public new void ShowInfo()
         {
             base.ShowInfo();
@@ -211,11 +195,9 @@ namespace isp_lab5
 
         }
     }
-
     internal interface IEquatable
     {
     }
-
     public class ForOdejda : Shkaf
     {
         enum size
@@ -243,12 +225,10 @@ namespace isp_lab5
             this.Size = s;
             this.model = model;
         }
-
         public ForOdejda(int date, string color, string model) : base(date, color)//конструктор
         {
             this.model = model;
         }
-
         public string Model
         {
             get
@@ -260,7 +240,6 @@ namespace isp_lab5
                 model = value;
             }
         }
-
         public override void ShowInfo()
         {
             base.ShowInfo();
@@ -298,7 +277,6 @@ namespace isp_lab5
                 table_name = value;
             }
         }
-
         public string Name_material
         {
             get
@@ -310,7 +288,6 @@ namespace isp_lab5
                 name_material = value;
             }
         }
-
         public string Number_legs
         {
             get
@@ -322,13 +299,13 @@ namespace isp_lab5
                 number_legs = value;
             }
         }
-
         public void GetInfoAboutTable()
         {
             Console.Write($"Информация о столе:\n1.название стола: {table_name}\n2.название материала: {name_material}" +
             $"\n3.кол-во ножек стола: {number_legs}\n");
         }
     }
+
     class Program
     {
         static void Main(string[] args)
@@ -360,6 +337,5 @@ namespace isp_lab5
             Shkaf.HowManyShkafs();
             Console.ReadLine();
         }
-
     }
 }
