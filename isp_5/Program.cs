@@ -274,36 +274,16 @@ namespace isp_lab5
             }
         }
     }
-
-    struct Table
+    interface ITable
     {
-        string name;
-        string material;
+        string Name { get; }
+        string Material { get; }
+    }
+    struct Table: ITable
+    {
+        public string Name { get; }
+        public string Material { get; }
         string legs;
-
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = value;
-            }
-        }
-
-        public string Material
-        {
-            get
-            {
-                return material;
-            }
-            set
-            {
-                material = value;
-            }
-        }
 
         public string Legs
         {
@@ -316,9 +296,10 @@ namespace isp_lab5
                 legs = value;
             }
         }
+
         public void GetInfoAboutTable()
         {
-            Console.Write($"Информация о столе:\n1.название стола: {name}\n2.название материала: {material}" +
+            Console.Write($"Информация о столе:\n1.название стола: {Name}\n2.название материала: {Material}" +
             $"\n3.кол-во ножек стола: {legs}\n");
         }
     }
@@ -330,8 +311,8 @@ namespace isp_lab5
             Furniture furniture = new Shkaf(2019, "Дуб", "Сереневый");
             furniture.ShowInfo();
             Table t = new Table();
-            t.Name = "Винтажный cтол";
-            t.Material = "Сосна";
+           /* t.Name = "Винтажный cтол";
+            t.Material = "Сосна";*/
             t.Legs = "4";
             t.GetInfoAboutTable();
             Shkaf.HowManyShkafs();
