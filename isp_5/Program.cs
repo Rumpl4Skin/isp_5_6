@@ -6,33 +6,33 @@ using System.Threading.Tasks;
 
 namespace isp_lab5
 {
-    public interface IComparable
-    {
-        int CompareTo(object o);
-    }
     public abstract class Furniture
     {
-        private int date_prod; //дата производства
+        private int date; //дата производства
         private string type; //вид мебели
         private string material; //материал
+
         public Furniture(string type, int date, string material)//конструктор с 3 аргументами
         {
             this.type = type;
-            this.date_prod = date;
+            this.date = date;
             this.material = material;
         }
+
         public Furniture(int date, string material)//конструктор с двумя аргументами
         {
-            this.date_prod = date;
+            this.date = date;
             type = "Шкаф";
             this.material = material;
         }
+
         public Furniture(int date) //конструктор с одним аргументом
         {
-            this.date_prod = date;
+            this.date = date;
             type = "Шкаф";
             material = "Фанера";
         }
+
         public string Type
         {
             get
@@ -44,17 +44,19 @@ namespace isp_lab5
                 type = value;
             }
         }
-        public int Date_prod
+
+        public int Date
         {
             get
             {
-                return date_prod;
+                return date;
             }
             set
             {
-                date_prod = value;
+                date = value;
             }
         }
+
         public string Material
         {
             get
@@ -66,11 +68,12 @@ namespace isp_lab5
                 material = value;
             }
         }
+
         public virtual void ShowInfo()
         {
             Console.WriteLine("Класс: Мебель");
             Console.WriteLine("Вид мебели: {0}", type);
-            Console.WriteLine("Дата производства: {0}", Convert.ToString(date_prod));
+            Console.WriteLine("Дата производства: {0}", Convert.ToString(date));
             Console.WriteLine("Материал: {0}", material);
         }
     }
@@ -79,18 +82,21 @@ namespace isp_lab5
     {       
        private string color; //цвет шкафа
         private static int count = 0; //счетчик
+
         public Shkaf(int date, string material, string color) : base(date, material)//конструктор
         {
          
             this.color = color;
             count++;
         }
+
         public Shkaf(int date, string color) : base(date)//конструктор
         {
 
             this.color = color;
             count++;
         }
+
         public string Color
         {
             get
@@ -102,6 +108,7 @@ namespace isp_lab5
                 color = value;
             }
         }
+
         public override void ShowInfo()
         {
             base.ShowInfo();
@@ -109,6 +116,7 @@ namespace isp_lab5
             Console.WriteLine("Цвет шкафа: {0}", color);
 
         }
+
         public static void HowManyShkafs()
         {
             Console.WriteLine("Количество шкафов: {0}", count);
@@ -123,10 +131,12 @@ namespace isp_lab5
         {
             this.model = model;
         }
+
         public ForPosuda(int date, string color, string model) : base(date, color) //конструктор
         {
             this.model = model;
         }
+
         public string Model
         {
             get
@@ -138,6 +148,7 @@ namespace isp_lab5
                 model = value;
             }
         }
+
         public override void ShowInfo()
         {
             base.ShowInfo();
@@ -145,15 +156,16 @@ namespace isp_lab5
             Console.WriteLine("Модель для посуды: {0}", model);
 
         }
+
         public int CompareTo(Object o)
         {
             ForPosuda e = o as ForPosuda;
 
             if (e != null)
             {
-                if (this.Date_prod < e.Date_prod)
+                if (this.Date < e.Date)
                     return -1;
-                else if (this.Date_prod > e.Date_prod)
+                else if (this.Date > e.Date)
                     return 1;
                 else
                     return 0;
@@ -172,10 +184,12 @@ namespace isp_lab5
         {
             this.model = model;
         }
+
         public ForObuv(int date, string color, string model) : base(date, color)//конструктор
         {
             this.model = model;
         }
+
         public string Model
         {
             get
@@ -187,6 +201,7 @@ namespace isp_lab5
                 model = value;
             }
         }
+
         public new void ShowInfo()
         {
             base.ShowInfo();
@@ -198,6 +213,7 @@ namespace isp_lab5
     internal interface IEquatable
     {
     }
+
     public class ForOdejda : Shkaf
     {
         enum size
@@ -220,15 +236,18 @@ namespace isp_lab5
                 data[index] = value;
             }
         }
+
         public ForOdejda(int date, string material, string color, string model,int s) : base(date, material, color)//конструктор
         {
             this.Size = s;
             this.model = model;
         }
+
         public ForOdejda(int date, string color, string model) : base(date, color)//конструктор
         {
             this.model = model;
         }
+
         public string Model
         {
             get
@@ -240,6 +259,7 @@ namespace isp_lab5
                 model = value;
             }
         }
+
         public override void ShowInfo()
         {
             base.ShowInfo();
@@ -257,52 +277,54 @@ namespace isp_lab5
                     Console.WriteLine(" габариты: {0}", size.big);
                     break;
             }
-
         }
     }
+
     struct table
     {
-        string table_name;
-        string name_material;
-        string number_legs;
+        string name;
+        string material;
+        string legs;
 
-        public string Table_name
+        public string Name
         {
             get
             {
-                return table_name;
+                return name;
             }
             set
             {
-                table_name = value;
+                name = value;
             }
         }
-        public string Name_material
+
+        public string Material
         {
             get
             {
-                return name_material;
+                return material;
             }
             set
             {
-                name_material = value;
+                material = value;
             }
         }
-        public string Number_legs
+
+        public string Legs
         {
             get
             {
-                return number_legs;
+                return legs;
             }
             set
             {
-                number_legs = value;
+                legs = value;
             }
         }
         public void GetInfoAboutTable()
         {
-            Console.Write($"Информация о столе:\n1.название стола: {table_name}\n2.название материала: {name_material}" +
-            $"\n3.кол-во ножек стола: {number_legs}\n");
+            Console.Write($"Информация о столе:\n1.название стола: {name}\n2.название материала: {material}" +
+            $"\n3.кол-во ножек стола: {legs}\n");
         }
     }
 
@@ -313,9 +335,9 @@ namespace isp_lab5
             Furniture furniture = new Shkaf(2019, "Дуб","Сереневый");
             furniture.ShowInfo();
             table t = new table();
-            t.Table_name = "Винтажный cтол";
-            t.Name_material = "Сосна";
-            t.Number_legs = "4";
+            t.Name = "Винтажный cтол";
+            t.Material = "Сосна";
+            t.Legs = "4";
             t.GetInfoAboutTable();
             Shkaf.HowManyShkafs();
             Console.WriteLine();
