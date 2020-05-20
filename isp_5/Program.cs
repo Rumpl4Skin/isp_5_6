@@ -85,14 +85,12 @@ namespace isp_lab5
 
         public Shkaf(int date, string material, string color) : base(date, material)//конструктор
         {
-
             this.color = color;
             count++;
         }
 
         public Shkaf(int date, string color) : base(date)//конструктор
         {
-
             this.color = color;
             count++;
         }
@@ -154,7 +152,6 @@ namespace isp_lab5
             base.ShowInfo();
             Console.WriteLine("Класс: для посуды");
             Console.WriteLine("Модель для посуды: {0}", model);
-
         }
 
         public int CompareTo(ForPosuda o)
@@ -202,7 +199,6 @@ namespace isp_lab5
             base.ShowInfo();
             Console.WriteLine("Класс: для обуви");
             Console.WriteLine("модель для обуви: {0}", model);
-
         }
     }
     internal interface IEquatable
@@ -311,8 +307,6 @@ namespace isp_lab5
             Furniture furniture = new Shkaf(2019, "Дуб", "Сереневый");
             furniture.ShowInfo();
             Table t = new Table();
-           /* t.Name = "Винтажный cтол";
-            t.Material = "Сосна";*/
             t.Legs = "4";
             t.GetInfoAboutTable();
             Shkaf.HowManyShkafs();
