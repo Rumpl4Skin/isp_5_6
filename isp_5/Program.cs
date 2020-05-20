@@ -79,13 +79,13 @@ namespace isp_lab5
     }
 
     public class Shkaf : Furniture
-    {       
-       private string color; //цвет шкафа
+    {
+        private string color; //цвет шкафа
         private static int count = 0; //счетчик
 
         public Shkaf(int date, string material, string color) : base(date, material)//конструктор
         {
-         
+
             this.color = color;
             count++;
         }
@@ -124,7 +124,7 @@ namespace isp_lab5
 
     }
 
-    public class ForPosuda : Shkaf ,IComparable
+    public class ForPosuda : Shkaf, IComparable<ForPosuda>
     {
         private string model; //модель
         public ForPosuda(int date, string material, string color, string model) : base(date, material, color) //конструктор
@@ -157,18 +157,13 @@ namespace isp_lab5
 
         }
 
-        public int CompareTo(Object o)
+        public int CompareTo(ForPosuda o)
         {
             ForPosuda e = o as ForPosuda;
 
             if (e != null)
             {
-                if (this.Date < e.Date)
-                    return -1;
-                else if (this.Date > e.Date)
-                    return 1;
-                else
-                    return 0;
+                return this.Date.CompareTo(o.Date);
             }
             else
             {
@@ -223,7 +218,7 @@ namespace isp_lab5
             big
         }
         ForOdejda[] data;
-        private int Size=0;
+        private int Size = 0;
         private string model; //модель
         public ForOdejda this[int index]
         {
@@ -237,7 +232,7 @@ namespace isp_lab5
             }
         }
 
-        public ForOdejda(int date, string material, string color, string model,int s) : base(date, material, color)//конструктор
+        public ForOdejda(int date, string material, string color, string model, int s) : base(date, material, color)//конструктор
         {
             this.Size = s;
             this.model = model;
@@ -265,7 +260,7 @@ namespace isp_lab5
             base.ShowInfo();
             Console.WriteLine("Класс: для одежды");
             Console.WriteLine("Модель для одежды: {0}", model);
-            switch(Size)
+            switch (Size)
             {
                 case 0:
                     Console.WriteLine(" габариты: {0}", size.small);
@@ -280,7 +275,7 @@ namespace isp_lab5
         }
     }
 
-    struct table
+    struct Table
     {
         string name;
         string material;
@@ -332,9 +327,9 @@ namespace isp_lab5
     {
         static void Main(string[] args)
         {
-            Furniture furniture = new Shkaf(2019, "Дуб","Сереневый");
+            Furniture furniture = new Shkaf(2019, "Дуб", "Сереневый");
             furniture.ShowInfo();
-            table t = new table();
+            Table t = new Table();
             t.Name = "Винтажный cтол";
             t.Material = "Сосна";
             t.Legs = "4";
@@ -345,7 +340,7 @@ namespace isp_lab5
             shkaf.Color = "Бордовый";
             shkaf.ShowInfo();
             Console.WriteLine();
-            ForPosuda ForPosuda = new ForPosuda(2017, "Черный", "с стеклянными матовыми дверцами");        
+            ForPosuda ForPosuda = new ForPosuda(2017, "Черный", "с стеклянными матовыми дверцами");
             ForPosuda.ShowInfo();
             Console.WriteLine();
             Shkaf.HowManyShkafs();
@@ -353,7 +348,7 @@ namespace isp_lab5
             ForObuv ForObuv = new ForObuv(2015, "Бежевый", "с стеклянными глянцевыми дверцами");
             ForObuv.ShowInfo();
             Console.WriteLine();
-            ForOdejda ForOdejda = new ForOdejda(1950, "Мореный дуб", "Черный", "с позолоченными ручками",2);
+            ForOdejda ForOdejda = new ForOdejda(1950, "Мореный дуб", "Черный", "с позолоченными ручками", 2);
             ForOdejda.ShowInfo();
             Console.WriteLine();
             Shkaf.HowManyShkafs();
