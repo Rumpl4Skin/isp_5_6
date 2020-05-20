@@ -169,7 +169,7 @@ namespace isp_lab5
         }
     }
 
-    public class ForObuv : Shkaf, IEquatable
+    public class ForObuv : Shkaf
     {
         private string model; //модель
         public ForObuv(int date, string material, string color, string model) : base(date, material, color)//конструктор
@@ -201,9 +201,7 @@ namespace isp_lab5
             Console.WriteLine("модель для обуви: {0}", model);
         }
     }
-    internal interface IEquatable
-    {
-    }
+
 
     public class ForOdejda : Shkaf
     {
@@ -327,6 +325,9 @@ namespace isp_lab5
             ForOdejda.ShowInfo();
             Console.WriteLine();
             Shkaf.HowManyShkafs();
+            ForPosuda[] posuda = new ForPosuda[2];
+            Console.WriteLine(posuda[0].CompareTo(posuda[1]));
+            Console.WriteLine(posuda[1].CompareTo(posuda[2]));
             Console.ReadLine();
         }
     }
